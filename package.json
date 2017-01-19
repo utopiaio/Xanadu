@@ -17,15 +17,16 @@
     "babel-preset-env": "^1.1.8",
     "babel-preset-react": "^6.16.0",
     "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "beta",
     "file-loader": "^0.9.0",
     "node-sass": "^4.3.0",
     "postcss-loader": "^1.2.2",
     "precss": "^1.4.0",
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
-    "webpack": "^1.14.0",
+    "webpack": "beta",
     "webpack-bundle-size-analyzer": "^2.5.0",
-    "webpack-dev-server": "^1.16.2"
+    "webpack-dev-server": "beta"
   },
   "babel": {
     "presets": [
