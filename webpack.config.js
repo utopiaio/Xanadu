@@ -25,7 +25,15 @@ const commonPlugins = [
 
 module.exports = {
   entry: {
-    vendor: ['react', 'react-dom'],
+    vendor: [
+      'react',
+      'react-dom',
+      'react-redux',
+      'react-router',
+      'redux',
+      'reselect',
+      'styled-components',
+    ],
     app: ['./app/index.jsx'],
   },
   output: {
