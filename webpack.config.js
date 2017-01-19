@@ -1,16 +1,14 @@
+/**
+ * This is a classic case of RTFM situation :)
+ * All the configurations you see before you are taken from their documentation page, hand to hart.
+ */
+
 const webpack = require('webpack');
 const path = require('path');
-const autoprefixer = require('autoprefixer');
-const precss = require('precss');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const PRODUCTION = process.env.NODE_ENV === 'production';
 const commonPlugins = [
-  new webpack.LoaderOptionsPlugin({
-    options: {
-      postcss: [autoprefixer({ browsers: ['iOS >= 7'] }), precss],
-    },
-  }),
   new ExtractTextPlugin({
     filename: 'bundle.css',
     disable: false,
