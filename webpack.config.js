@@ -52,6 +52,10 @@ module.exports = {
     ],
   },
   devtool: PRODUCTION ? 'source-map' : false,
+  devServer: {
+    compress: true,
+    publicPath: 'https://localhost:8080/build/',
+  },
   plugins: PRODUCTION ? [
     new webpack.DefinePlugin({
       'process.env': {
