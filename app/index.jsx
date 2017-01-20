@@ -6,8 +6,8 @@ import 'normalize.css';
 
 require('App/scss/app.scss');
 
-function HelloWorld() {
+function Rafi() {
   return (<div>🎉</div>);
 }
 
-render(<HelloWorld />, document.querySelector('#app'));
+render(<Rafi />, document.querySelector('#app'));
