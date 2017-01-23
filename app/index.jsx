@@ -6,8 +6,6 @@ import 'normalize.css';
 
 require('App/scss/app.scss');
 
-function Rafi() {
-  return (<div>🎉</div>);
-}
+import routes from 'App/config/routes.jsx';
 
-render(<Rafi />, document.querySelector('#app'));
+render(routes, document.querySelector('#app'));
