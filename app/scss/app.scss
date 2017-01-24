@@ -1,4 +1,22 @@
-// scss goes here
-a.active-link {
-  background-color: grey !important;
+/**
+ * BEM
+ *
+ * > Block: *functionally independent* page component
+ * > Element: a constituent part of a block that can't be used outside of it
+ * > Modifier: defines the appearance and behavior of a block or an element
+ *
+ * block-name__element-name_modifier-name_modifier-value
+ *
+ * menu__item_active
+ * menu__item_theme_morning-forest
+ * menu__item_type_radio
+ * menu_active
+ */
+
+// As we can't tap into Link's `activeClassName`
+// we'll be using a combination of styled-components and BEM
+.menu {
+  &_active {
+    background: red;
+  }
 }

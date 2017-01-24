@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
 
 import Menu from 'App/components/styled/Menu.jsx';
 import MenuLink from 'App/components/styled/MenuLink.jsx';
@@ -15,10 +14,10 @@ class App extends Component {
       <div>
         <div>{ this.props.children }</div>
 
-        <Menu>
-          <MenuLink to="/current" activeClassName="active-link">Current</MenuLink>
-          <MenuLink to="/all" activeClassName="active-link">All</MenuLink>
-          <MenuLink to="/setting" activeClassName="active-link">Setting</MenuLink>
+        <Menu className="menu">
+          <MenuLink to="/current" activeClassName="menu_active">Current</MenuLink>
+          <MenuLink to="/all" activeClassName="menu_active">All</MenuLink>
+          <MenuLink to="/setting" activeClassName="menu_active">Setting</MenuLink>
         </Menu>
       </div>
     );

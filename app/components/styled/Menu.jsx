@@ -1,4 +1,3 @@
-import { PropTypes } from 'react';
 import styled from 'styled-components';
 
 const Menu = styled.div`
@@ -7,8 +6,5 @@ const Menu = styled.div`
   flex-wrap: nowrap;
   background-color: ${props => props.theme.backgroundColor};
 `;
-
-Menu.propTypes = {
-};
 
 module.exports = Menu;

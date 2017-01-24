@@ -11,9 +11,8 @@ import { Link } from 'react-router';
 const MenuLink = styled(Link)`
   flex: 1 1 auto;
   text-align: center;
-  color: ${props => props.theme.color}
   text-decoration: none;
-  border: 1px solid red;
+  color: ${props => props.theme.color};
 `;
 
 module.exports = MenuLink;
