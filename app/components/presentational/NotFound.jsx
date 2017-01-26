@@ -1,18 +1,7 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 
-class NotFound extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  render() {
-    return (<div>[Not Found]</div>);
-  }
+function NotFound() {
+  return (<div>[Not Found]</div>);
 }
-
-NotFound.propTypes = {};
-
-NotFound.defaultProps = {};
 
 module.exports = NotFound;
