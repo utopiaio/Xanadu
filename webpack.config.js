@@ -73,7 +73,7 @@ module.exports = {
       compress: {
         warnings: false,
       },
-    })
+    }),
   ].concat(commonPlugins) : [
   ].concat(commonPlugins),
 };
