@@ -1,9 +1,9 @@
 import localforage from 'localforage';
 
 const config = {
-  NAME: 'Rafi',
-  STORE_NAME: 'Rafi',
-  DESCRIPTION: 'Todo, Rafi way',
+  NAME: 'Xanadu',
+  STORE_NAME: 'Xanadu',
+  DESCRIPTION: 'Xanadu',
   LF_STORE: {
     TODO: 'TODO',
     THEME: 'THEME',
