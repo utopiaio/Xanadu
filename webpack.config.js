@@ -45,16 +45,41 @@ module.exports = {
   module: {
     rules: [
       // js[x]
-      { test: /\.jsx?$/, loader: 'babel-loader' },
+      {
+        test: /\.jsx?$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        options: {
+          presets: [
+            'react',
+            ['env', { targets: { browsers: ['last 2 versions', 'safari >= 10'] } }],
+          ],
+        },
+      },
 
       // css
-      { test: /\.css$/, use: ['style-loader', ExtractTextPlugin.extract('css-loader')] },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader',
+        }),
+      },
 
       // fonts
-      { test: /\.(woff(2)?|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file-loader?name=static/[name].[ext]' },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'file-loader?name=static/[name].[ext]',
+      },
 
       // sass
-      { test: /\.scss$/, use: ['style-loader', ExtractTextPlugin.extract('css-loader'), 'postcss-loader', 'sass-loader'] },
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'postcss-loader', 'sass-loader'],
+        }),
+      },
     ],
   },
   devtool: PRODUCTION ? 'source-map' : false,
