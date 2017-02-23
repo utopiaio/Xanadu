@@ -17,7 +17,8 @@ const MenuLink = styled(Link)`
   align-items: center;
   text-align: center;
   text-decoration: none;
-  color: ${props => props.theme.color};
+  background-color: #fff;
+  color: #969696;
 `;
 
 module.exports = MenuLink;
