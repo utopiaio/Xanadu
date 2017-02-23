@@ -26,7 +26,7 @@ body {
   font-size: 14px;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
   background-color: transparent;
-  color: transparent;
+  color: #696969;
   padding: 0;
   margin: 0;
 }
@@ -36,20 +36,10 @@ body {
   flex-direction: column;
   height: 100vh;
 
-  &__header {
-    flex: 0 0 64px;
-    border: 1px solid blue;
-  }
-
   &__body {
     flex: 1 1 auto;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
-    border: 1px solid red;
-  }
-
-  &__menu {
-    flex: 0 0 50px;
   }
 }
 

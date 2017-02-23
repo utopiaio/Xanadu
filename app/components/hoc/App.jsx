@@ -14,8 +14,6 @@ class App extends Component {
   render() {
     return (
       <div className="xanadu-container">
-        <div className="xanadu-container__header">Header</div>
-
         <div className="xanadu-container__body">{ this.props.children }</div>
 
         <Menu className="xanadu-container__menu menu">
