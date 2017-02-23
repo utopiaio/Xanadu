@@ -2,11 +2,18 @@ import React, { Component, PropTypes } from 'react';
 import { Provider } from 'react-redux';
 
 import store from 'App/redux/store.js';
+import { watchLocation } from 'App/redux/actions/location.js';
+import { bootAsync } from 'App/redux/actions/todo.js';
 
 import Menu from 'App/components/styled/Menu.jsx';
 import MenuLink from 'App/components/styled/MenuLink.jsx';
 import MenuIcon from 'App/components/styled/MenuIcon.jsx';
 import MenuText from 'App/components/styled/MenuText.jsx';
+
+// starting location watcher...
+store.dispatch(watchLocation());
+// booting from LF...
+store.dispatch(bootAsync());
 
 class App extends Component {
   constructor(props) {
