@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Provider } from 'react-redux';
 
 import store from 'App/redux/store.js';
 
@@ -15,26 +16,28 @@ class App extends Component {
 
   render() {
     return (
-      <div className="xanadu-container">
-        <div className="xanadu-container__body">{ this.props.children }</div>
+      <Provider store={store}>
+        <div className="xanadu-container">
+          <div className="xanadu-container__body">{ this.props.children }</div>
 
-        <Menu className="xanadu-container__menu menu">
-          <MenuLink to="/current" activeClassName="menu_active">
-            <MenuIcon className="icon-location" />
-            <MenuText>Now</MenuText>
-          </MenuLink>
+          <Menu className="xanadu-container__menu menu">
+            <MenuLink to="/current" activeClassName="menu_active">
+              <MenuIcon className="icon-location" />
+              <MenuText>Now</MenuText>
+            </MenuLink>
 
-          <MenuLink to="/all" activeClassName="menu_active">
-            <MenuIcon className="icon-archive" />
-            <MenuText>All</MenuText>
-          </MenuLink>
+            <MenuLink to="/all" activeClassName="menu_active">
+              <MenuIcon className="icon-archive" />
+              <MenuText>All</MenuText>
+            </MenuLink>
 
-          <MenuLink to="/setting" activeClassName="menu_active">
-            <MenuIcon className="icon-cog" />
-            <MenuText>Setting</MenuText>
-          </MenuLink>
-        </Menu>
-      </div>
+            <MenuLink to="/setting" activeClassName="menu_active">
+              <MenuIcon className="icon-cog" />
+              <MenuText>Setting</MenuText>
+            </MenuLink>
+          </Menu>
+        </div>
+      </Provider>
     );
   }
 }

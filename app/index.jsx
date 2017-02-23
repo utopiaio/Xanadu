@@ -12,9 +12,11 @@ import Index from 'App/components/presentational/Index.jsx';
 import AllTodos from 'App/components/hoc/AllTodos.jsx';
 import CurrentTodos from 'App/components/hoc/CurrentTodos.jsx';
 import Setting from 'App/components/hoc/Setting.jsx';
+import New from 'App/components/hoc/New.jsx';
+import Edit from 'App/components/hoc/Edit.jsx';
 import NotFound from 'App/components/presentational/NotFound.jsx';
 
-class Rafi extends Component {
+class Xanadu extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -36,6 +38,8 @@ class Rafi extends Component {
           <Route path="/all" component={AllTodos} />
           <Route path="/current" component={CurrentTodos} />
           <Route path="/setting" component={Setting} />
+          <Route path="/new" component={New} />
+          <Route path="/edit/:id" component={Edit} />
           <Route path="*" component={NotFound} />
         </Route>
       </Router>
@@ -43,6 +47,6 @@ class Rafi extends Component {
   }
 }
 
-render(<Rafi />, document.querySelector('#app'));
+render(<Xanadu />, document.querySelector('#app'));
 
 module.exports = App;
