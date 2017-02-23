@@ -35,8 +35,8 @@ class Xanadu extends Component {
       <Router history={hashHistory}>
         <Route path="/" component={App}>
           <IndexRoute component={Index} />
-          <Route path="/all" component={AllTodos} />
           <Route path="/current" component={CurrentTodos} />
+          <Route path="/all" component={AllTodos} />
           <Route path="/setting" component={Setting} />
           <Route path="/new" component={New} />
           <Route path="/edit/:id" component={Edit} />
