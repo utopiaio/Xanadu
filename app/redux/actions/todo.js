@@ -37,7 +37,7 @@ function bootAsync() {
     localforage
       .getItem(LF_STORE.TODO)
       .then((lfTodo) => {
-        dispatch(boot(lfTodo));
+        dispatch(boot(lfTodo === null ? [] : lfTodo));
       }, (err) => {
         console.warn('Unable to boot from LF', err);
       });
