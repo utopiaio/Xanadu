@@ -59,10 +59,11 @@ function addAsync(task) {
   return (dispatch) => {
     getCurrentPosition.then((location) => {
       // I'm tempted to seal this _const_ object
+      const { accuracy, longitude, latitude } = location;
       const todo = {
         id: Date.now(),
         task,
-        coordinate: location.coords,
+        coordinate: { accuracy, longitude, latitude },
       };
 
       dispatch(add(todo));
@@ -70,7 +71,7 @@ function addAsync(task) {
       localforage
         .getItem(LF_STORE.TODO)
         .then((lfTodo) => {
-          localforage.setItem(LF_STORE.TODO, [...lfTodo, todo]);
+          localforage.setItem(LF_STORE.TODO, lfTodo === null ? [todo] : [...lfTodo, todo]);
         }, (err) => {
           console.warn('Unable to sync with LF', err);
         });
@@ -171,10 +172,11 @@ function editAsync(id, task) {
 
     getCurrentPosition.then((location) => {
       // I'm tempted to seal this _const_ object
+      const { accuracy, longitude, latitude } = location;
       const todo = {
         index: toggleIndex,
         task,
-        coordinate: location.coords,
+        coordinate: { accuracy, longitude, latitude },
       };
 
       dispatch(edit(todo));
