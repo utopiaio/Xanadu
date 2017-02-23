@@ -59,3 +59,137 @@ function addAsync(task) {
   };
 }
 
+function remove(index) {
+  return {
+    type: TODO_REMOVE,
+    payload: {
+      index,
+    },
+  };
+}
+
+function removeAsync(id) {
+  return (dispatch, getState) => {
+    const todo = getState().todo;
+    let removeIndex = -1;
+
+    todo.forEach((t, index) => {
+      if (t.id === id) {
+        removeIndex = index;
+      }
+    });
+
+    dispatch(remove(removeIndex));
+
+    localforage
+      .getItem(LF_STORE.TODO)
+      .then((lfTodo) => {
+        let lfRemoveIndex = -1;
+
+        lfTodo.forEach((lfT, index) => {
+          if (lfT.id === id) {
+            lfRemoveIndex = index;
+          }
+        });
+
+        localforage.setItem(LF_STORE.TODO, [
+          ...lfTodo.slice(0, lfRemoveIndex),
+          ...lfTodo.slice(lfRemoveIndex + 1),
+        ]);
+      }, (err) => {
+        console.warn('Unable to sync with LF', err);
+      });
+  };
+}
+
+function toggle(index) {
+  return {
+    type: TODO_TOGGLE,
+    payload: {
+      index,
+    },
+  };
+}
+
+function toggleAsync(id) {
+  return (dispatch, getState) => {
+    const todos = getState().todo;
+    let toggleIndex = -1;
+
+    todos.forEach((todo, index) => {
+      if (todo.id === id) {
+        toggleIndex = index;
+      }
+    });
+
+    dispatch(toggle(toggleIndex));
+  };
+}
+
+function edit({ index, task, coordinate }) {
+  return {
+    type: TODO_EDIT,
+    payload: {
+      index,
+      task,
+      coordinate,
+    },
+  };
+}
+
+function editAsync(id, task) {
+  return (dispatch, getState) => {
+    const todos = getState().todo;
+    let toggleIndex = -1;
+
+    todos.forEach((todo, index) => {
+      if (todo.id === id) {
+        toggleIndex = index;
+      }
+    });
+
+    getCurrentPosition.then((location) => {
+      // I'm tempted to seal this _const_ object
+      const todo = {
+        index: toggleIndex,
+        task,
+        coordinate: location.coords,
+      };
+
+      dispatch(edit(todo));
+
+      localforage
+        .getItem(LF_STORE.TODO)
+        .then((lfTodo) => {
+          let lfEditIndex = -1;
+
+          lfTodo.forEach((lfT, index) => {
+            if (lfT.id === id) {
+              lfEditIndex = index;
+            }
+          });
+
+          localforage.setItem(LF_STORE.TODO, [
+            ...lfTodo.slice(0, lfEditIndex),
+            Object.assign({}, { id, task, coordinate: location.coords }),
+            ...lfTodo.slice(lfEditIndex + 1),
+          ]);
+        }, (err) => {
+          console.warn('Unable to sync with LF', err);
+        });
+    }, (err) => {
+      console.warn(err);
+    });
+  };
+}
+
+module.exports = {
+  add,
+  addAsync,
+  edit,
+  editAsync,
+  remove,
+  removeAsync,
+  toggle,
+  toggleAsync,
+};
