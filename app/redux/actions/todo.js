@@ -1,5 +1,6 @@
 /* global window */
 /* eslint no-console: 0 */
+
 import localforage from 'localforage';
 
 import { TODO_BOOT, TODO_ADD, TODO_EDIT, TODO_TOGGLE, TODO_REMOVE } from 'App/redux/constants/todo.js';
