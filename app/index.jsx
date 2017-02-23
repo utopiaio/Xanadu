@@ -2,10 +2,11 @@
 import React, { Component } from 'react';
 import { Route, Router, IndexRoute, hashHistory } from 'react-router';
 import { render } from 'react-dom';
-import 'normalize.css';
-import 'App/static/icon/style.css';
 
-require('App/scss/app.scss');
+import 'normalize.css';
+
+import 'App/static/icon/style.css';
+import 'App/scss/app.scss';
 
 import App from 'App/components/hoc/App.jsx';
 import Index from 'App/components/presentational/Index.jsx';
