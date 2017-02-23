@@ -23,6 +23,7 @@ body {
   -webkit-font-smoothing: antialiased !important;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   user-select: none;
+  font-size: 14px;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
   background-color: transparent;
   color: transparent;
@@ -49,7 +50,6 @@ body {
 
   &__menu {
     flex: 0 0 50px;
-    border: 1px solid green;
   }
 }
 

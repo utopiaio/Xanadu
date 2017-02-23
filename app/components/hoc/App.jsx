@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 
 import Menu from 'App/components/styled/Menu.jsx';
 import MenuLink from 'App/components/styled/MenuLink.jsx';
+import MenuIcon from 'App/components/styled/MenuIcon.jsx';
+import MenuText from 'App/components/styled/MenuText.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -17,9 +19,20 @@ class App extends Component {
         <div className="xanadu-container__body">{ this.props.children }</div>
 
         <Menu className="xanadu-container__menu menu">
-          <MenuLink to="/current" activeClassName="menu_active">Current</MenuLink>
-          <MenuLink to="/all" activeClassName="menu_active">All</MenuLink>
-          <MenuLink to="/setting" activeClassName="menu_active">Setting</MenuLink>
+          <MenuLink to="/current" activeClassName="menu_active">
+            <MenuIcon className="icon-location" />
+            <MenuText>Now</MenuText>
+          </MenuLink>
+
+          <MenuLink to="/all" activeClassName="menu_active">
+            <MenuIcon className="icon-archive" />
+            <MenuText>All</MenuText>
+          </MenuLink>
+
+          <MenuLink to="/setting" activeClassName="menu_active">
+            <MenuIcon className="icon-cog" />
+            <MenuText>Setting</MenuText>
+          </MenuLink>
         </Menu>
       </div>
     );

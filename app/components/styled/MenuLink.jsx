@@ -9,7 +9,12 @@ import { Link } from 'react-router';
  * So for now MenuLink is also controlled with a .scss file for active styling
  */
 const MenuLink = styled(Link)`
+  display: flex;
   flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: center;
+  text-decoration: none;
+  align-items: center;
   text-align: center;
   text-decoration: none;
   color: ${props => props.theme.color};
