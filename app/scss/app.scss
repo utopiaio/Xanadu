@@ -57,6 +57,7 @@ body {
 // we'll be using a combination of styled-components and BEM
 .menu {
   &_active {
-    background: red;
+    color: #1da1f2 !important;
+    background-color: #f0f0f0;
   }
 }
