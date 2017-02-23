@@ -1,9 +1,0 @@
-const FILTER_ALL = 'FILTER_ALL';
-const FILTER_DONE = 'FILTER_DONE';
-const FILTER_UNDONE = 'FILTER_UNDONE';
-
-module.exports = {
-  FILTER_ALL,
-  FILTER_DONE,
-  FILTER_UNDONE,
-};
