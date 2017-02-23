@@ -11,10 +11,12 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <div>{ this.props.children }</div>
+      <div className="xanadu-container">
+        <div className="xanadu-container__header">Header</div>
 
-        <Menu className="menu">
+        <div className="xanadu-container__body">{ this.props.children }</div>
+
+        <Menu className="xanadu-container__menu menu">
           <MenuLink to="/current" activeClassName="menu_active">Current</MenuLink>
           <MenuLink to="/all" activeClassName="menu_active">All</MenuLink>
           <MenuLink to="/setting" activeClassName="menu_active">Setting</MenuLink>

@@ -1,6 +1,6 @@
 /* global document */
 import React, { Component } from 'react';
-import { Route, Router, IndexRoute, browserHistory } from 'react-router';
+import { Route, Router, IndexRoute, hashHistory } from 'react-router';
 import { ThemeProvider } from 'styled-components';
 import { render } from 'react-dom';
 import 'normalize.css';
@@ -34,7 +34,7 @@ class Rafi extends Component {
   render() {
     return (
       <ThemeProvider theme={lightTheme}>
-        <Router history={browserHistory}>
+        <Router history={hashHistory}>
           <Route path="/" component={App}>
             <IndexRoute component={Index} />
             <Route path="/all" component={AllTodos} />
