@@ -4,6 +4,7 @@ import { Route, Router, IndexRoute, hashHistory } from 'react-router';
 import { ThemeProvider } from 'styled-components';
 import { render } from 'react-dom';
 import 'normalize.css';
+import 'App/static/icon/style.css';
 
 require('App/scss/app.scss');
 
