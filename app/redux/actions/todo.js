@@ -2,7 +2,7 @@
 /* eslint no-console: 0 */
 import localforage from 'localforage';
 
-import { TODO_ADD, TODO_EDIT, TODO_TOGGLE, TODO_REMOVE } from 'App/redux/constants/todo.js';
+import { TODO_BOOT, TODO_ADD, TODO_EDIT, TODO_TOGGLE, TODO_REMOVE } from 'App/redux/constants/todo.js';
 import { LF_STORE } from 'App/config/localforage.js';
 import getCurrentPosition from 'App/util/getCurrentPosition.js';
 
@@ -22,6 +22,27 @@ import getCurrentPosition from 'App/util/getCurrentPosition.js';
  * Variables *cough* <constants>, that interact with LF will be prefixed with
  * `lf`, if naming collision happens it will be out of pure coincidence.
  */
+
+function boot(todos) {
+  return {
+    type: TODO_BOOT,
+    payload: {
+      todos,
+    },
+  };
+}
+
+function bootAsync() {
+  return (dispatch) => {
+    localforage
+      .getItem(LF_STORE.TODO)
+      .then((lfTodo) => {
+        dispatch(boot(lfTodo));
+      }, (err) => {
+        console.warn('Unable to boot from LF', err);
+      });
+  };
+}
 
 function add({ id, task, coordinate }) {
   return {
@@ -184,6 +205,8 @@ function editAsync(id, task) {
 }
 
 module.exports = {
+  boot,
+  bootAsync,
   add,
   addAsync,
   edit,

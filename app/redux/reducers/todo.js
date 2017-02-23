@@ -1,7 +1,10 @@
-import { TODO_ADD, TODO_EDIT, TODO_TOGGLE, TODO_REMOVE } from 'App/redux/constants/todo.js';
+import { TODO_BOOT, TODO_ADD, TODO_EDIT, TODO_TOGGLE, TODO_REMOVE } from 'App/redux/constants/todo.js';
 
 function reducer(state = [], action) {
   switch (action.type) {
+    case TODO_BOOT:
+      return action.payload.todos;
+
     case TODO_ADD:
       return [...state, Object.assign(action.payload, { done: false })];
 
