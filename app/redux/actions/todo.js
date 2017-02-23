@@ -57,7 +57,7 @@ function add({ id, task, coordinate }) {
 
 function addAsync(task) {
   return (dispatch) => {
-    getCurrentPosition.then((location) => {
+    getCurrentPosition().then((location) => {
       // I'm tempted to seal this _const_ object
       const { accuracy, longitude, latitude } = location;
       const todo = {
@@ -170,7 +170,7 @@ function editAsync(id, task) {
       }
     });
 
-    getCurrentPosition.then((location) => {
+    getCurrentPosition().then((location) => {
       // I'm tempted to seal this _const_ object
       const { accuracy, longitude, latitude } = location;
       const todo = {
