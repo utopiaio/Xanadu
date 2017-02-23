@@ -17,9 +17,7 @@ import NotFound from 'App/components/presentational/NotFound.jsx';
 class Rafi extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      theme: '', // TODO: store.theme...
-    };
+    this.state = {};
   }
 
   componentDidMount() {
