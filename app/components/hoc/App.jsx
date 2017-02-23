@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
+import store from 'App/redux/store.js';
+
 import Menu from 'App/components/styled/Menu.jsx';
 import MenuLink from 'App/components/styled/MenuLink.jsx';
 import MenuIcon from 'App/components/styled/MenuIcon.jsx';
