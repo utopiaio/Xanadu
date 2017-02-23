@@ -178,7 +178,7 @@ function editAsync(id, task) {
           console.warn('Unable to sync with LF', err);
         });
     }, (err) => {
-      console.warn(err);
+      console.warn('Unable to get location', err);
     });
   };
 }
