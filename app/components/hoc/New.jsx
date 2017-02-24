@@ -31,7 +31,7 @@ let New = ({ location, add }) => {
         ><i className="icon-circle-plus" /> Add New Task</Button>
       </form>
 
-      <i style={{ textAlign: 'center', marginTop: '0.5em', marginBottom: '.25em', fontSize: '2em' }} className="icon-location-2" />
+      <i style={{ textAlign: 'center', marginTop: '0.5em', marginBottom: '.25em', fontSize: '2em' }} className="icon-location" />
       <span style={{ textAlign: 'center' }}>Accuracy within <b style={{ color: '#1da1f2' }}>{ window.parseInt(location.accuracy).toLocaleString('us')}</b> meters</span>
     </ScrollView>
   );
