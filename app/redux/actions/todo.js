@@ -1,6 +1,6 @@
 /* global window */
 /* eslint no-console: 0 */
-
+import moment from 'moment';
 import localforage from 'localforage';
 
 import { TODO_BOOT, TODO_ADD, TODO_EDIT, TODO_TOGGLE, TODO_REMOVE } from 'App/redux/constants/todo.js';
@@ -44,13 +44,14 @@ function bootTodoAsync() {
   };
 }
 
-function add({ id, task, coordinate }) {
+function add({ id, task, coordinate, time }) {
   return {
     type: TODO_ADD,
     payload: {
       id,
       task,
       coordinate,
+      time,
     },
   };
 }
@@ -58,7 +59,12 @@ function add({ id, task, coordinate }) {
 function addAsync(task) {
   return (dispatch, getState) => {
     // I'm tempted to seal this _const_ object
-    const todo = Object.assign({}, { id: Date.now(), task }, { coordinate: getState().location });
+    const todo = Object.assign({}, {
+      id: Date.now(),
+      task,
+      time: moment().format(),
+      coordinate: getState().location,
+    });
 
     dispatch(add(todo));
 
@@ -168,6 +174,7 @@ function editAsync(id, task) {
       index: toggleIndex,
       task,
       coordinate: getState().location,
+      time: moment().format(),
     };
 
     dispatch(edit(todo));
