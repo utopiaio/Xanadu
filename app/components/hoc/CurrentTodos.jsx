@@ -16,7 +16,7 @@ let CurrentTodos = ({ todos, location, range, toggle, edit }) => (
         <small style={{ fontSize: '0.4em' }}>Meters</small>
       </HeaderMeter>
 
-      <HeaderTitle>Xanadu</HeaderTitle>
+      <HeaderTitle>Now</HeaderTitle>
 
       <HeaderLink to="/new">
         <i className="icon-circle-plus" />
