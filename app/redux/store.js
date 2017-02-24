@@ -9,7 +9,7 @@ import range from 'App/redux/reducers/range.js';
 
 const store = createStore(
   combineReducers({ todo, location, range }),
-  { todo: [], location: {}, range: 100 },
+  { todo: [], location: { accuracy: 1000, longitude: 0, latitude: 0 }, range: 100 },
   window.devToolsExtension
     ? compose(applyMiddleware(thunk), window.devToolsExtension())
     : applyMiddleware(thunk),
