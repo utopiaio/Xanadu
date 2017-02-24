@@ -8,6 +8,7 @@ const config = {
     TODO: 'TODO',
     THEME: 'THEME',
     LANGUAGE: 'LANGUAGE',
+    RANGE: 'RANGE',
   },
 };
 

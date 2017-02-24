@@ -24,7 +24,7 @@ import getCurrentPosition from 'App/util/getCurrentPosition.js';
  * `lf`, if naming collision happens it will be out of pure coincidence.
  */
 
-function boot(todos) {
+function bootTodo(todos) {
   return {
     type: TODO_BOOT,
     payload: {
@@ -33,12 +33,12 @@ function boot(todos) {
   };
 }
 
-function bootAsync() {
+function bootTodoAsync() {
   return (dispatch) => {
     localforage
       .getItem(LF_STORE.TODO)
       .then((lfTodo) => {
-        dispatch(boot(lfTodo === null ? [] : lfTodo));
+        dispatch(bootTodo(lfTodo === null ? [] : lfTodo));
       }, (err) => {
         console.warn('Unable to boot from LF', err);
       });
@@ -115,10 +115,14 @@ function removeAsync(id) {
           }
         });
 
-        localforage.setItem(LF_STORE.TODO, [
-          ...lfTodo.slice(0, lfRemoveIndex),
-          ...lfTodo.slice(lfRemoveIndex + 1),
-        ]);
+        localforage
+          .setItem(LF_STORE.TODO, [
+            ...lfTodo.slice(0, lfRemoveIndex),
+            ...lfTodo.slice(lfRemoveIndex + 1),
+          ])
+          .then(null, (err) => {
+            console.warn('Unable to sync with LF', err);
+          });
       }, (err) => {
         console.warn('Unable to sync with LF', err);
       });
@@ -208,8 +212,8 @@ function editAsync(id, task) {
 }
 
 module.exports = {
-  boot,
-  bootAsync,
+  bootTodo,
+  bootTodoAsync,
   add,
   addAsync,
   edit,

@@ -3,7 +3,8 @@ import { Provider } from 'react-redux';
 
 import store from 'App/redux/store.js';
 import { watchLocation } from 'App/redux/actions/location.js';
-import { bootAsync } from 'App/redux/actions/todo.js';
+import { bootTodoAsync } from 'App/redux/actions/todo.js';
+import { bootRangeAsync } from 'App/redux/actions/range.js';
 
 import Menu from 'App/components/styled/Menu.jsx';
 import MenuLink from 'App/components/styled/MenuLink.jsx';
@@ -13,7 +14,9 @@ import MenuText from 'App/components/styled/MenuText.jsx';
 // starting location watcher...
 store.dispatch(watchLocation());
 // booting from LF...
-store.dispatch(bootAsync());
+store.dispatch(bootTodoAsync());
+// booting from LF...
+store.dispatch(bootRangeAsync());
 
 class App extends Component {
   constructor(props) {
