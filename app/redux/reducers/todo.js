@@ -16,6 +16,7 @@ function reducer(state = [], action) {
         ...state.slice(0, action.payload.index),
         Object.assign({}, todoEdit, {
           task: action.payload.task,
+          time: action.payload.time,
           coordinate: action.payload.coordinate,
         }),
         ...state.slice(action.payload.index + 1),

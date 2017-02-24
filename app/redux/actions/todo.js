@@ -150,13 +150,14 @@ function toggleAsync(id) {
   };
 }
 
-function edit({ index, task, coordinate }) {
+function edit({ index, task, time, coordinate }) {
   return {
     type: TODO_EDIT,
     payload: {
       index,
       task,
       coordinate,
+      time,
     },
   };
 }
