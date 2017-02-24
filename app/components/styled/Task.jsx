@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const TaskItem = styled.div`
   display: flex;
-  flex: 1 0 auto;
+  flex: 0 0 auto;
   flex-direction: row;
   padding: 0.75em .25em;
   min-height: 75px;
