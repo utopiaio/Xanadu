@@ -6,7 +6,7 @@ function reducer(state = [], action) {
       return action.payload.todos;
 
     case TODO_ADD: {
-      return [...state, Object.assign({}, action.payload, { done: false })];
+      return [Object.assign({}, action.payload, { done: false }), ...state];
     }
 
     case TODO_EDIT: {
