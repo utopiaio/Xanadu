@@ -11,6 +11,7 @@ const Button = styled.button`
   color: ${props => props.active ? '#1da1f2' : 'inherit'};
   opacity: ${props => props.disabled ? 0.5 : 1};
   transition: all 0.25s linear;
+  outline: none;
 `;
 
 Button.propTypes = {
