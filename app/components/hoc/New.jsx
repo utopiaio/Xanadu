@@ -18,7 +18,7 @@ let New = ({ location, add }) => {
         <input
           type="text"
           placeholder="New Task"
-          ref={(node) => { input = node; }}
+          ref={(node) => { input = node; if (input !== null) input.focus(); }}
           minLength="3"
           maxLength="160"
           required
@@ -32,7 +32,7 @@ let New = ({ location, add }) => {
       </form>
 
       <i style={{ textAlign: 'center', marginTop: '0.5em', marginBottom: '.25em', fontSize: '2em' }} className="icon-location-2" />
-      <span style={{ textAlign: 'center' }}>Accuracy within <b style={{ color: '#1da1f2' }}>{window.parseInt(location.accuracy)}</b> meters</span>
+      <span style={{ textAlign: 'center' }}>Accuracy within <b style={{ color: '#1da1f2' }}>{ window.parseInt(location.accuracy).toLocaleString('us')}</b> meters</span>
     </ScrollView>
   );
 };
@@ -48,9 +48,10 @@ New.propTypes = {
 
 New = connect(state => ({
   location: state.location,
-}), dispatch => ({
+}), (dispatch, props) => ({
   add(task) {
     dispatch(addAsync(task));
+    props.router.goBack();
   },
 }))(New);
 
