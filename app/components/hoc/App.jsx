@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Provider } from 'react-redux';
 
 import store from 'App/redux/store.js';
-import { watchLocation } from 'App/redux/actions/location.js';
+import { bootLocation, watchLocation } from 'App/redux/actions/location.js';
 import { bootTodoAsync } from 'App/redux/actions/todo.js';
 import { bootRangeAsync } from 'App/redux/actions/range.js';
 
@@ -11,6 +11,8 @@ import MenuLink from 'App/components/styled/MenuLink.jsx';
 import MenuIcon from 'App/components/styled/MenuIcon.jsx';
 import MenuText from 'App/components/styled/MenuText.jsx';
 
+// booting with current location...
+store.dispatch(bootLocation());
 // starting location watcher...
 store.dispatch(watchLocation());
 // booting from LF...
