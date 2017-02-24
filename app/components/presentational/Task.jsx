@@ -15,8 +15,8 @@ function Task({ task, toggle, location, edit }) {
         done={task.done}
       />
 
-      <TaskItemInfo style={{ flex: '1 1 auto' }}>
-        <span style={{ fontSize: '1.5em', paddingBottom: '0.2em' }}>{task.task}</span>
+      <TaskItemInfo>
+        <span style={{ fontSize: '1.25em', paddingBottom: '0.2em' }}>{task.task}</span>
         <small style={{ color: '#6E685C', paddingBottom: '0.4em' }}>{ distance } Meter{distance > 1 ? 's' : ''}</small>
         <small style={{ color: '#95a5a6' }}>{ moment(task.time).format('YYYY-MM-DD hh:mm A') } <i>({ moment(task.time).fromNow() })</i></small>
       </TaskItemInfo>

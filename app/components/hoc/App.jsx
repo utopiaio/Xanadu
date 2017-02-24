@@ -6,10 +6,7 @@ import { bootLocation, watchLocation } from 'App/redux/actions/location.js';
 import { bootTodoAsync } from 'App/redux/actions/todo.js';
 import { bootRangeAsync } from 'App/redux/actions/range.js';
 
-import Menu from 'App/components/styled/Menu.jsx';
-import MenuLink from 'App/components/styled/MenuLink.jsx';
-import MenuIcon from 'App/components/styled/MenuIcon.jsx';
-import MenuText from 'App/components/styled/MenuText.jsx';
+import { Menu, MenuLink, MenuIcon, MenuText } from 'App/components/styled/Menu.jsx';
 
 // booting with current location...
 store.dispatch(bootLocation());
