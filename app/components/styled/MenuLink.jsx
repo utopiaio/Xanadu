@@ -19,6 +19,7 @@ const MenuLink = styled(Link)`
   text-decoration: none;
   background-color: #fff;
   color: #969696;
+  transition: all 0 linear;
 `;
 
 module.exports = MenuLink;
