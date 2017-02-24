@@ -147,6 +147,26 @@ function toggleAsync(id) {
     });
 
     dispatch(toggle(toggleIndex));
+
+    localforage
+      .getItem(LF_STORE.TODO)
+      .then((lfTodo) => {
+        let lfToggleIndex = -1;
+
+        lfTodo.forEach((lfT, index) => {
+          if (lfT.id === id) {
+            lfToggleIndex = index;
+          }
+        });
+
+        localforage.setItem(LF_STORE.TODO, [
+          ...lfTodo.slice(0, lfToggleIndex),
+          Object.assign({}, lfTodo[lfToggleIndex], { done: !lfTodo[lfToggleIndex].done }),
+          ...lfTodo.slice(lfToggleIndex + 1),
+        ]);
+      }, (err) => {
+        console.warn('Unable to sync with LF', err);
+      });
   };
 }
 
