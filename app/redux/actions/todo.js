@@ -5,7 +5,6 @@ import localforage from 'localforage';
 
 import { TODO_BOOT, TODO_ADD, TODO_EDIT, TODO_TOGGLE, TODO_REMOVE } from 'App/redux/constants/todo.js';
 import { LF_STORE } from 'App/config/localforage.js';
-import getCurrentPosition from 'App/util/getCurrentPosition.js';
 
 /**
  * 1. Each async functions will communicate with LF to make sure we're in-sync
@@ -57,28 +56,19 @@ function add({ id, task, coordinate }) {
 }
 
 function addAsync(task) {
-  return (dispatch) => {
-    getCurrentPosition().then((location) => {
-      // I'm tempted to seal this _const_ object
-      const { accuracy, longitude, latitude } = location;
-      const todo = {
-        id: Date.now(),
-        task,
-        coordinate: { accuracy, longitude, latitude },
-      };
+  return (dispatch, getState) => {
+    // I'm tempted to seal this _const_ object
+    const todo = Object.assign({}, { id: Date.now(), task }, { coordinate: getState().location });
 
-      dispatch(add(todo));
+    dispatch(add(todo));
 
-      localforage
-        .getItem(LF_STORE.TODO)
-        .then((lfTodo) => {
-          localforage.setItem(LF_STORE.TODO, lfTodo === null ? [todo] : [...lfTodo, todo]);
-        }, (err) => {
-          console.warn('Unable to sync with LF', err);
-        });
-    }, (err) => {
-      console.warn(err);
-    });
+    localforage
+      .getItem(LF_STORE.TODO)
+      .then((lfTodo) => {
+        localforage.setItem(LF_STORE.TODO, lfTodo === null ? [todo] : [...lfTodo, todo]);
+      }, (err) => {
+        console.warn('Unable to sync with LF', err);
+      });
   };
 }
 
@@ -166,48 +156,41 @@ function edit({ index, task, coordinate }) {
 
 function editAsync(id, task) {
   return (dispatch, getState) => {
-    const todos = getState().todo;
     let toggleIndex = -1;
 
-    todos.forEach((todo, index) => {
+    getState().todo.forEach((todo, index) => {
       if (todo.id === id) {
         toggleIndex = index;
       }
     });
 
-    getCurrentPosition().then((location) => {
-      // I'm tempted to seal this _const_ object
-      const { accuracy, longitude, latitude } = location;
-      const todo = {
-        index: toggleIndex,
-        task,
-        coordinate: { accuracy, longitude, latitude },
-      };
+    const todo = {
+      index: toggleIndex,
+      task,
+      coordinate: getState().location,
+    };
 
-      dispatch(edit(todo));
+    dispatch(edit(todo));
 
-      localforage
-        .getItem(LF_STORE.TODO)
-        .then((lfTodo) => {
-          let lfEditIndex = -1;
+    localforage
+      .getItem(LF_STORE.TODO)
+      .then((lfTodo) => {
+        let lfEditIndex = -1;
 
-          lfTodo.forEach((lfT, index) => {
-            if (lfT.id === id) {
-              lfEditIndex = index;
-            }
-          });
-
-          localforage.setItem(LF_STORE.TODO, [
-            ...lfTodo.slice(0, lfEditIndex),
-            Object.assign({}, { id, task, coordinate: location.coords }),
-            ...lfTodo.slice(lfEditIndex + 1),
-          ]);
-        }, (err) => {
-          console.warn('Unable to sync with LF', err);
+        lfTodo.forEach((lfT, index) => {
+          if (lfT.id === id) {
+            lfEditIndex = index;
+          }
         });
-    }, (err) => {
-      console.warn('Unable to get location', err);
-    });
+
+        localforage.setItem(LF_STORE.TODO, [
+          ...lfTodo.slice(0, lfEditIndex),
+          Object.assign({}, { id, task, coordinate: todo.coordinate }),
+          ...lfTodo.slice(lfEditIndex + 1),
+        ]);
+      }, (err) => {
+        console.warn('Unable to sync with LF', err);
+      });
   };
 }
 
