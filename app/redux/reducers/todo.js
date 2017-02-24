@@ -5,8 +5,9 @@ function reducer(state = [], action) {
     case TODO_BOOT:
       return action.payload.todos;
 
-    case TODO_ADD:
-      return [...state, Object.assign(action.payload, { done: false })];
+    case TODO_ADD: {
+      return [...state, Object.assign({}, action.payload, { done: false })];
+    }
 
     case TODO_EDIT: {
       const todoEdit = state[action.payload.index];

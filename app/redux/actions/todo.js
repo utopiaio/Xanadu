@@ -71,7 +71,8 @@ function addAsync(task) {
     localforage
       .getItem(LF_STORE.TODO)
       .then((lfTodo) => {
-        localforage.setItem(LF_STORE.TODO, lfTodo === null ? [todo] : [...lfTodo, todo]);
+        const todoDone = Object.assign({}, todo, { done: false });
+        localforage.setItem(LF_STORE.TODO, lfTodo === null ? [todoDone] : [...lfTodo, todoDone]);
       }, (err) => {
         console.warn('Unable to sync with LF', err);
       });
