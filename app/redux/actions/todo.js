@@ -194,7 +194,11 @@ function editAsync(id, task) {
 
         localforage.setItem(LF_STORE.TODO, [
           ...lfTodo.slice(0, lfEditIndex),
-          Object.assign({}, todo),
+          Object.assign({}, lfTodo[lfEditIndex], {
+            task: todo.task,
+            time: todo.time,
+            coordinate: todo.coordinate,
+          }),
           ...lfTodo.slice(lfEditIndex + 1),
         ]);
       }, (err) => {
