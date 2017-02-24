@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 
 import { toggleAsync } from 'App/redux/actions/todo.js';
 import { currentTodo } from 'App/redux/selectors/todo.js';
@@ -17,7 +16,7 @@ let CurrentTodos = ({ todos, location, range, toggle, edit }) => (
         <small style={{ fontSize: '0.4em' }}>Meters</small>
       </HeaderMeter>
 
-      <HeaderTitle >Xanadu</HeaderTitle>
+      <HeaderTitle>Xanadu</HeaderTitle>
 
       <HeaderLink to="/new">
         <i className="icon-circle-plus" />

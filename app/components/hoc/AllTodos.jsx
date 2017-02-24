@@ -1,64 +1,67 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+
+import { toggleAsync } from 'App/redux/actions/todo.js';
 
 import ScrollView from 'App/components/styled/ScrollView.jsx';
-import Header from 'App/components/styled/Header.jsx';
+import { Header, HeaderMeter, HeaderTitle, HeaderLink } from 'App/components/styled/Header.jsx';
+import Task from 'App/components/presentational/Task.jsx';
 
-class AllTodos extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+let CurrentTodos = ({ todos, location, range, toggle, edit }) => (
+  <ScrollView height="calc(100vh - 50px)">
+    <Header style={{ padding: '0 1em' }}>
+      <HeaderMeter>
+        <span className={location.accuracy > range ? 'warn' : ''}>{ location.accuracy.toLocaleString('us') }</span>
+        <small style={{ fontSize: '0.4em' }}>Meters</small>
+      </HeaderMeter>
 
-  render() {
-    return (
-      <ScrollView height="calc(100vh - 50px)">
-        <Header>
-          <a>this is the header</a>
-          <a>this</a>
-        </Header>
+      <HeaderTitle>Xanadu</HeaderTitle>
 
-        <ScrollView height="calc(100vh - 114px)">
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-          <h1>this is the content</h1>
-        </ScrollView>
-      </ScrollView>
-    );
-  }
-}
+      <HeaderLink to="/new">
+        <i className="icon-circle-plus" />
+      </HeaderLink>
+    </Header>
 
-AllTodos.propTypes = {};
+    <ScrollView height="calc(100vh - 114px)">
+      { todos.map(todo => (
+        <Task
+          key={todo.id}
+          task={todo}
+          toggle={toggle}
+          edit={edit}
+          location={location}
+        />
+      )) }
+    </ScrollView>
+  </ScrollView>
+);
 
-AllTodos.defaultProps = {};
+CurrentTodos.propTypes = {
+  todos: PropTypes.arrayOf(PropTypes.shape({
+  })).isRequired,
+  toggle: PropTypes.func.isRequired,
+  edit: PropTypes.func.isRequired,
+  range: PropTypes.number.isRequired,
+  location: PropTypes.shape({
+    accuracy: PropTypes.number.isRequired,
+    longitude: PropTypes.number.isRequired,
+    latitude: PropTypes.number.isRequired,
+  }).isRequired,
+};
 
-module.exports = AllTodos;
+CurrentTodos = connect(state => ({
+  todos: state.todo,
+  location: state.location,
+  range: state.range,
+}), (dispatch, props) => ({
+  toggle(id) {
+    dispatch(toggleAsync(id));
+  },
+  edit(id) {
+    props.router.push(`/edit/${id}`);
+  },
+}))(CurrentTodos);
+
+CurrentTodos.defaultProps = {};
+
+module.exports = CurrentTodos;
