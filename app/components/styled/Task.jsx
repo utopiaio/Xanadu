@@ -6,7 +6,7 @@ const TaskItem = styled.div`
   flex-direction: row;
   padding: 0.75em .25em;
   min-height: 75px;
-  border-bottom: 1px solid #ecf0f1;
+  border-bottom: 1px solid #D0D0D0;
   align-content: center;
   align-items: center;
 `;
