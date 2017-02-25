@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 import { toggleAsync } from 'App/redux/actions/todo.js';
 
 import ScrollView from 'App/components/styled/ScrollView.jsx';
-import { Header, HeaderMeter, HeaderTitle, HeaderLink } from 'App/components/styled/Header.jsx';
+import { Header, HeaderMeter, HeaderMeterIndicator, HeaderTitle, HeaderLink } from 'App/components/styled/Header.jsx';
 import Task from 'App/components/presentational/Task.jsx';
 
 let CurrentTodos = ({ todos, location, range, toggle, edit }) => (
   <ScrollView height="calc(100vh - 50px)">
     <Header style={{ padding: '0 1em' }}>
       <HeaderMeter>
-        <span className={location.accuracy > range ? 'warn' : ''}>{ Math.floor(location.accuracy).toLocaleString('us') }</span>
+        <HeaderMeterIndicator accuracy={location.accuracy} range={range}>{ Math.floor(location.accuracy).toLocaleString('us') }</HeaderMeterIndicator>
         <small style={{ fontSize: '0.4em' }}>Meters</small>
       </HeaderMeter>
 

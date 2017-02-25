@@ -19,6 +19,10 @@ const HeaderMeter = styled.div`
   padding-bottom: 0.25em;
 `;
 
+const HeaderMeterIndicator = styled.span`
+  color: ${props => props.accuracy > props.range ? '#ff6d5e' : '#2ecc71'};
+`;
+
 const HeaderTitle = styled.div`
   flex: 1 1 auto;
   align-content: center;
@@ -46,6 +50,7 @@ const HeaderLink = styled(Link)`
 module.exports = {
   Header,
   HeaderMeter,
+  HeaderMeterIndicator,
   HeaderTitle,
   HeaderLink,
 };
