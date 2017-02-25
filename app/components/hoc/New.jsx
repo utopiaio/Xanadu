@@ -14,7 +14,7 @@ let New = ({ location, add }) => {
 
   return (
     <ScrollView height="calc(100vh - 50px)">
-      <form style={{ padding: '1em' }} onSubmit={(e) => { e.preventDefault(); add(input.value); input.value = ''; }}>
+      <form style={{ padding: '1em', paddingTop: '3em' }} onSubmit={(e) => { e.preventDefault(); add(input.value); input.value = ''; }}>
         <input
           type="text"
           placeholder="New Task"
@@ -50,8 +50,10 @@ New = connect(state => ({
   location: state.location,
 }), (dispatch, props) => ({
   add(task) {
-    dispatch(addAsync(task));
-    props.router.goBack();
+    if (task.length > 2) {
+      dispatch(addAsync(task));
+      props.router.goBack();
+    }
   },
 }))(New);
 

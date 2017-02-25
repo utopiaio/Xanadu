@@ -12,7 +12,7 @@ let Edit = ({ task, location, update, remove }) => {
 
   return (
     <ScrollView height="calc(100vh - 50px)">
-      <form style={{ padding: '1em' }} onSubmit={(e) => { e.preventDefault(); update(task.id, input.value); input.value = ''; }}>
+      <form style={{ padding: '1em', paddingTop: '3em' }} onSubmit={(e) => { e.preventDefault(); update(task.id, input.value); input.value = ''; }}>
         <input
           type="text"
           placeholder="New Task"
@@ -53,6 +53,7 @@ Edit.propTypes = {
     latitude: PropTypes.func.number,
   }).isRequired,
   update: PropTypes.func.isRequired,
+  remove: PropTypes.func.isRequired,
 };
 
 Edit = connect((state, props) => ({
@@ -75,8 +76,10 @@ Edit = connect((state, props) => ({
   location: state.location,
 }), (dispatch, props) => ({
   update(id, task) {
-    dispatch(editAsync(id, task));
-    props.router.goBack();
+    if (task.length > 2) {
+      dispatch(editAsync(id, task));
+      props.router.goBack();
+    }
   },
   remove(id) {
     dispatch(removeAsync(id));
