@@ -30,6 +30,11 @@ class App extends Component {
           <div className="xanadu-container__body">{ this.props.children }</div>
 
           <Menu className="xanadu-container__menu menu">
+            <MenuLink onlyActiveOnIndex to="/" activeClassName="menu_active">
+              <MenuIcon className="icon-archive" />
+              <MenuText>Xanadu</MenuText>
+            </MenuLink>
+
             <MenuLink to="/current" activeClassName="menu_active">
               <MenuIcon className="icon-location" />
               <MenuText>Now</MenuText>
