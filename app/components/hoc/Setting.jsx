@@ -15,7 +15,7 @@ let SettingComponent = ({ range, update }) => (
 
     <ScrollView style={{ justifyContent: 'center', alignContent: 'center', alignItems: 'center' }} height="calc(100vh - 114px)">
       <Setting>
-        <SettingButton onClick={() => update((range - 25) > 0 ? (range - 25) : 5)}>
+        <SettingButton onClick={() => update((range - 25) > 0 ? (range - 25) : 25)}>
           <i className="icon-circle-minus" />
         </SettingButton>
 
