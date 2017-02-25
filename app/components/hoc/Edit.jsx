@@ -36,7 +36,7 @@ let Edit = ({ task, location, update, remove }) => {
         ><i className="icon-trash" /> Remove Task</Button>
       </form>
 
-      <i style={{ textAlign: 'center', marginTop: '0.5em', marginBottom: '.25em', fontSize: '2em' }} className="icon-location" />
+      <i style={{ textAlign: 'center', marginBottom: '.25em', fontSize: '2em' }} className="icon-location" />
       <span style={{ textAlign: 'center' }}>Current accuracy within <b style={{ color: '#1da1f2' }}>{ window.parseInt(location.accuracy).toLocaleString('us')}</b> meters</span>
     </ScrollView>
   );
