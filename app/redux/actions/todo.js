@@ -38,6 +38,12 @@ function bootTodoAsync() {
       .getItem(LF_STORE.TODO)
       .then((lfTodo) => {
         dispatch(bootTodo(lfTodo === null ? [] : lfTodo));
+
+        if (window.navigator.splashscreen !== undefined) {
+          setTimeout(() => {
+            window.navigator.splashscreen.hide();
+          }, 250);
+        }
       }, (err) => {
         console.warn('Unable to boot from LF', err);
       });

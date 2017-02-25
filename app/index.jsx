@@ -1,4 +1,4 @@
-/* global document */
+/* global window, document */
 import React, { Component } from 'react';
 import { Route, Router, IndexRoute, hashHistory } from 'react-router';
 import { render } from 'react-dom';
@@ -48,6 +48,6 @@ class Xanadu extends Component {
   }
 }
 
-render(<Xanadu />, document.querySelector('#app'));
-
-module.exports = App;
+// window.document.addEventListener('deviceready', () => {
+  render(<Xanadu />, document.querySelector('#app'));
+// });
