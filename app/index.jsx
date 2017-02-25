@@ -31,6 +31,15 @@ class Xanadu extends Component {
 
   componentDidMount() {
     // TODO: connect and Theme subscribe for ThemeProvider
+
+    // booting with current location...
+    store.dispatch(bootLocation());
+    // starting location watcher...
+    store.dispatch(watchLocation());
+    // booting from LF...
+    store.dispatch(bootTodoAsync());
+    // booting from LF...
+    store.dispatch(bootRangeAsync());
   }
 
   componentWillUnmount() {
@@ -57,14 +66,5 @@ class Xanadu extends Component {
 }
 
 window.document.addEventListener('deviceready', () => {
-  // booting with current location...
-  store.dispatch(bootLocation());
-  // starting location watcher...
-  store.dispatch(watchLocation());
-  // booting from LF...
-  store.dispatch(bootTodoAsync());
-  // booting from LF...
-  store.dispatch(bootRangeAsync());
-
   render(<Xanadu />, document.querySelector('#app'));
 }, false);
