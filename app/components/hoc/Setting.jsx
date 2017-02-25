@@ -15,7 +15,7 @@ let SettingComponent = ({ range, update }) => (
 
     <ScrollView style={{ justifyContent: 'center', alignContent: 'center', alignItems: 'center' }} height="calc(100vh - 114px)">
       <Setting>
-        <SettingButton onClick={() => update((range - 25) > 0 ? (range - 25) : 25)}>
+        <SettingButton onTouchStart={() => update((range - 25) > 0 ? (range - 25) : 25)}>
           <i className="icon-circle-minus" />
         </SettingButton>
 
@@ -24,7 +24,7 @@ let SettingComponent = ({ range, update }) => (
           <small style={{ fontSize: '0.4em' }}>Meters</small>
         </SettingRange>
 
-        <SettingButton onClick={() => update((range + 25) > 1000 ? 1000 : range + 25)}>
+        <SettingButton onTouchStart={() => update((range + 25) > 1000 ? 1000 : range + 25)}>
           <i className="icon-circle-plus" />
         </SettingButton>
       </Setting>

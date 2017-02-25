@@ -15,7 +15,7 @@ let Edit = ({ task, location, update, remove }) => {
       <form style={{ padding: '1em', paddingTop: '3em' }} onSubmit={(e) => { e.preventDefault(); update(task.id, input.value); input.value = ''; }}>
         <input
           type="text"
-          placeholder="New Task"
+          placeholder={task.task}
           ref={(node) => { input = node; if (input !== null) { input.focus(); input.value = task.task; } }}
           minLength="3"
           maxLength="160"
