@@ -48,6 +48,6 @@ class Xanadu extends Component {
   }
 }
 
-// window.document.addEventListener('deviceready', () => {
+window.document.addEventListener('deviceready', () => {
   render(<Xanadu />, document.querySelector('#app'));
-// });
+});
