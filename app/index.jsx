@@ -9,7 +9,7 @@ import 'App/static/icon/style.css';
 import 'App/scss/app.scss';
 
 import App from 'App/components/hoc/App.jsx';
-import Index from 'App/components/presentational/Index.jsx';
+import Index from 'App/components/hoc/Index.jsx';
 import AllTodos from 'App/components/hoc/AllTodos.jsx';
 import CurrentTodos from 'App/components/hoc/CurrentTodos.jsx';
 import Setting from 'App/components/hoc/Setting.jsx';
