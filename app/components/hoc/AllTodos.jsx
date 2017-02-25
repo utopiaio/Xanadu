@@ -11,7 +11,7 @@ let CurrentTodos = ({ todos, location, range, toggle, edit }) => (
   <ScrollView height="calc(100vh - 50px)">
     <Header style={{ padding: '0 1em' }}>
       <HeaderMeter>
-        <span className={location.accuracy > range ? 'warn' : ''}>{ location.accuracy.toLocaleString('us') }</span>
+        <span className={location.accuracy > range ? 'warn' : ''}>{ Math.floor(location.accuracy).toLocaleString('us') }</span>
         <small style={{ fontSize: '0.4em' }}>Meters</small>
       </HeaderMeter>
 
