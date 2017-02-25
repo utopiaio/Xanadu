@@ -17,7 +17,7 @@ let Index = ({ location, todos, range }) => {
       <ScrollView style={{ justifyContent: 'center', alignItems: 'center', textAlign: 'center', padding: '0em 1em' }} height="calc(100vh - 114px)">
         <Info>
           <i className="icon-location" />
-          <InfoStat>{ ` ${location.accuracy.toLocaleString('us')} ` }</InfoStat>
+          <InfoStat>{ ` ${Math.floor(location.accuracy).toLocaleString('us')} ` }</InfoStat>
           <span>Meters</span>
         </Info>
 
