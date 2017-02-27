@@ -34,8 +34,10 @@ class Edit extends Component {
   }
 
   update(id, task) {
-    this.context.store.dispatch(editAsync(id, task));
-    this.props.router.goBack();
+    if (task.length > 2) {
+      this.context.store.dispatch(editAsync(id, task));
+      this.props.router.goBack();
+    }
   }
 
   remove(id) {

@@ -14,7 +14,7 @@ let New = ({ location, add }) => {
 
   return (
     <ScrollView height="calc(100vh - 50px)">
-      <form style={{ padding: '1em', paddingTop: '3em' }} onSubmit={(e) => { e.preventDefault(); add(input.value); input.value = ''; }}>
+      <form style={{ padding: '1em', paddingTop: '3em' }} onSubmit={(e) => { e.preventDefault(); add(input.value); }}>
         <input
           type="text"
           placeholder="New Task"
