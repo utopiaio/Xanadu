@@ -55,6 +55,7 @@ class Edit extends Component {
             name="task"
             placeholder={this.state.task}
             value={this.state.task}
+            ref={(node) => { if (node !== null) node.focus(); }}
             onChange={e => this.handleChange(e)}
             minLength="3"
             maxLength="160"
