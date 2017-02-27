@@ -22,8 +22,8 @@ class Edit extends Component {
       };
     } else {
       this.state = {
-        id: taskId,
-        task: task[0].task,
+        id: -1,
+        task: '',
         location: state.location,
       };
     }
