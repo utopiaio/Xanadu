@@ -17,7 +17,7 @@ function Task({ task, toggle, location, edit }) {
 
       <TaskItemInfo>
         <span style={{ fontSize: '1.6em', paddingBottom: '0.2em' }}>{task.task}</span>
-        <small style={{ color: '#6E685C', paddingBottom: '0.4em', fontSize: '1em' }}>{`${distance.toLocaleString('us')} Meter${distance > 1 ? 's' : ''} ◦ ${Math.floor(task.coordinate.accuracy).toLocaleString('us')}`}</small>
+        <small style={{ color: '#6E685C', paddingBottom: '0.3em', fontSize: '1em' }}>{`${distance.toLocaleString('us')} Meter${distance > 1 ? 's' : ''} ◦ ${Math.floor(task.coordinate.accuracy).toLocaleString('us')}`}</small>
         <small style={{ color: '#95a5a6', fontSize: '0.8em' }}>{ moment(task.time).fromNow() }</small>
       </TaskItemInfo>
 
