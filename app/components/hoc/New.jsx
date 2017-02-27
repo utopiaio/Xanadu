@@ -32,7 +32,7 @@ let New = ({ location, add }) => {
       </form>
 
       <i style={{ textAlign: 'center', marginBottom: '.25em', fontSize: '2em' }} className="icon-location" />
-      <span style={{ textAlign: 'center' }}>Current accuracy within <b style={{ color: '#1da1f2' }}>{ window.parseInt(location.accuracy).toLocaleString('us')}</b> meters</span>
+      <span style={{ textAlign: 'center' }}>Current accuracy within <b style={{ color: '#1da1f2' }}>{ Math.floor(location.accuracy).toLocaleString('us') }</b> meters</span>
     </ScrollView>
   );
 };
